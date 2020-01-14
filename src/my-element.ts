@@ -35,7 +35,7 @@ export class MyElement extends LitElement {
   `;
 
   @property({type: TemplateResult, attribute: false})
-  externalTestData = html``;
+  private externalTestData = html``;
 
   constructor() {
     super();
@@ -49,8 +49,8 @@ export class MyElement extends LitElement {
   @property({type: String})
   name = 'World';
 
-  @property({type: Number})
-  timerValue = 0;
+  @property({type: Number, attribute: false})
+  private timerValue = 0;
 
   // Controller to just call once inside render()
   // For every change render() is called again...
@@ -64,7 +64,7 @@ export class MyElement extends LitElement {
   @property({type: Number})
   count = 0;
 
-  getExternalData = (data: any) => {
+  private getExternalData = (data: any) => {
     const content = getData(data).then(data => {
       console.log('External data is loaded...');
       return data;

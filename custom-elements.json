@@ -2,6 +2,24 @@
   "version": "experimental",
   "tags": [
     {
+      "name": "sub-element",
+      "attributes": [
+        {
+          "name": "title",
+          "type": "string",
+          "default": "\"\""
+        }
+      ],
+      "properties": [
+        {
+          "name": "title",
+          "attribute": "title",
+          "type": "string",
+          "default": "\"\""
+        }
+      ]
+    },
+    {
       "name": "my-element",
       "description": "An example element.",
       "attributes": [
@@ -10,11 +28,6 @@
           "description": "The name to say \"Hello\" to.",
           "type": "string",
           "default": "\"World\""
-        },
-        {
-          "name": "timerValue",
-          "type": "number",
-          "default": "0"
         },
         {
           "name": "displayToken",
@@ -35,12 +48,6 @@
           "description": "The name to say \"Hello\" to.",
           "type": "string",
           "default": "\"World\""
-        },
-        {
-          "name": "timerValue",
-          "attribute": "timerValue",
-          "type": "number",
-          "default": "0"
         },
         {
           "name": "timerRef"
