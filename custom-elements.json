@@ -12,6 +12,16 @@
           "default": "\"World\""
         },
         {
+          "name": "timerValue",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "displayToken",
+          "type": "string",
+          "default": "\"\""
+        },
+        {
           "name": "count",
           "description": "The number of times the button has been clicked.",
           "type": "number",
@@ -25,6 +35,21 @@
           "description": "The name to say \"Hello\" to.",
           "type": "string",
           "default": "\"World\""
+        },
+        {
+          "name": "timerValue",
+          "attribute": "timerValue",
+          "type": "number",
+          "default": "0"
+        },
+        {
+          "name": "timerRef"
+        },
+        {
+          "name": "displayToken",
+          "attribute": "displayToken",
+          "type": "string",
+          "default": "\"\""
         },
         {
           "name": "count",

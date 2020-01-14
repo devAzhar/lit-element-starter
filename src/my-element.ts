@@ -34,10 +34,10 @@ export class MyElement extends LitElement {
   /**
    * The name to say "Hello" to.
    */
-  @property({ type: String })
+  @property({type: String})
   name = 'World';
 
-  @property({ type: Number })
+  @property({type: Number})
   timerValue = 0;
 
   // Controller to just call once inside render()
@@ -55,10 +55,11 @@ export class MyElement extends LitElement {
   render() {
     console.log(`render() -> start...`);
 
-    !this.timerRef && (this.timerRef = setTimeout(() => {
-      console.log(`setTimeout...`);
-      this.timerValue++;
-    }, 2000));
+    !this.timerRef &&
+      (this.timerRef = setTimeout(() => {
+        console.log(`setTimeout...`);
+        this.timerValue++;
+      }, 2000));
 
     return html`
       <h1>Hello ${this.timerValue}, ${this.name}!</h1>
