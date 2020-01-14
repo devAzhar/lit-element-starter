@@ -37,6 +37,9 @@ export class MyElement extends LitElement {
   @property()
   name = 'World';
 
+  @property()
+  timerValue = 0;
+
   /**
    * The number of times the button has been clicked.
    */
@@ -44,8 +47,12 @@ export class MyElement extends LitElement {
   count = 0;
 
   render() {
+    setTimeout(() => {
+      this.timerValue++;
+    }, 2000);
+
     return html`
-      <h1>Hello, ${this.name}!</h1>
+      <h1>Hello ${this.timerValue}, ${this.name}!</h1>
       <button @click=${this._onClick} part="button">
         Click Count: ${this.count}
       </button>
