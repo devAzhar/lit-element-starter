@@ -1,0 +1,1 @@
+{"version":3,"file":"report-data.js","sourceRoot":"","sources":["../src/services/report-data.ts"],"names":[],"mappings":"AAAA,MAAM,CAAC,MAAM,OAAO,GAAG,CAAC,IAAS,EAAE,EAAE;IACnC,OAAO,IAAI,OAAO,CAAC,OAAO,CAAC,EAAE;QAC3B,UAAU,CAAC,GAAG,EAAE,CAAC,OAAO,CAAC,IAAI,CAAC,EAAE,IAAI,CAAC,CAAC;IACxC,CAAC,CAAC,CAAC;AACL,CAAC,CAAC"}

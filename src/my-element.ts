@@ -13,6 +13,8 @@
  */
 
 import {LitElement, html, customElement, property, css} from 'lit-element';
+import { until } from 'lit-html/directives/until.js';
+import {getData} from './services/report-data';
 
 /**
  * An example element.
@@ -52,6 +54,14 @@ export class MyElement extends LitElement {
   @property({type: Number})
   count = 0;
 
+  getExternalData = (data: any) => {
+    const content = getData(data).then(data => {
+      console.log('External data is loaded...');
+      return data;
+    });
+    return html`<h1>${until(content, 'Loading External Data...')}</h1>`;
+  }
+  
   render() {
     console.log(`render() -> start...`);
 
@@ -63,6 +73,9 @@ export class MyElement extends LitElement {
 
     return html`
       <h1>Hello ${this.timerValue}, ${this.name}!</h1>
+      <div>
+          ${this.getExternalData('Test external data load')}
+      </div>
       <button @click=${this._onClick} part="button">
         Click Count: ${this.count}
       </button>
