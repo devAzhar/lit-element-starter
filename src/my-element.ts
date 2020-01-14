@@ -21,7 +21,7 @@ import {
 } from 'lit-element';
 import {until} from 'lit-html/directives/until.js';
 import {getData} from './services/report-data';
-import {getStyles} from './styles/my-eleement.styles';
+import {getStyles} from './styles/my-element.styles';
 import './sub-element';
 
 /**
