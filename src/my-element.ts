@@ -12,7 +12,7 @@
  * http://polymer.github.io/PATENTS.txt
  */
 
-import {LitElement, html, customElement, property, css} from 'lit-element';
+import {LitElement, html, customElement, property, css, TemplateResult} from 'lit-element';
 import { until } from 'lit-html/directives/until.js';
 import {getData} from './services/report-data';
 
@@ -32,6 +32,15 @@ export class MyElement extends LitElement {
       max-width: 800px;
     }
   `;
+
+  @property({type: TemplateResult, attribute: false})
+  externalTestData = html``;
+
+  constructor() {
+    super();
+    console.log(`constructor...`);
+    this.externalTestData = this.getExternalData('Test external data load');
+  }
 
   /**
    * The name to say "Hello" to.
@@ -74,7 +83,7 @@ export class MyElement extends LitElement {
     return html`
       <h1>Hello ${this.timerValue}, ${this.name}!</h1>
       <div>
-          ${this.getExternalData('Test external data load')}
+          ${this.externalTestData}
       </div>
       <button @click=${this._onClick} part="button">
         Click Count: ${this.count}
