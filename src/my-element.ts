@@ -15,6 +15,7 @@
 import {LitElement, html, customElement, property, css, TemplateResult} from 'lit-element';
 import { until } from 'lit-html/directives/until.js';
 import {getData} from './services/report-data';
+import './sub-element'
 
 /**
  * An example element.
@@ -82,12 +83,14 @@ export class MyElement extends LitElement {
 
     return html`
       <h1>Hello ${this.timerValue}, ${this.name}!</h1>
+      <sub-element title='sub-element-1'></sub-element>
       <div>
           ${this.externalTestData}
       </div>
       <button @click=${this._onClick} part="button">
         Click Count: ${this.count}
       </button>
+      <sub-element title='sub-element-2'></sub-element>
       <slot></slot>
     `;
   }
