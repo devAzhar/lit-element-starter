@@ -23,6 +23,7 @@ import {until} from 'lit-html/directives/until.js';
 import {getData} from './services/report-data';
 import {getStyles} from './styles/my-element.styles';
 import './sub-element';
+import { ConsoleLog } from './utils';
 
 /**
  * An example element.
@@ -41,7 +42,7 @@ export class MyElement extends LitElement {
 
   constructor() {
     super();
-    console.log(`constructor...`);
+    ConsoleLog(`constructor...`);
     this.externalTestData = this.getExternalData('Test external data load');
   }
 
@@ -68,7 +69,7 @@ export class MyElement extends LitElement {
 
   private getExternalData = (data: any): TemplateResult => {
     const content = getData(data).then((data) => {
-      console.log('External data is loaded...');
+      ConsoleLog('External data is loaded...');
       return data;
     });
     return html`
@@ -77,11 +78,11 @@ export class MyElement extends LitElement {
   };
 
   render() {
-    console.log(`render() -> start...`);
+    ConsoleLog(`render() -> start...`);
 
     !this.timerRef &&
       (this.timerRef = setTimeout(() => {
-        console.log(`setTimeout...`);
+        ConsoleLog(`setTimeout...`);
         this.timerValue++;
       }, 2000));
 
@@ -102,7 +103,7 @@ export class MyElement extends LitElement {
 
   private _onClick() {
     this.count++;
-    console.log(`Clicked -> displayToken = ${this.displayToken}`);
+    ConsoleLog(`Clicked -> displayToken = ${this.displayToken}`);
   }
 
   foo(): string {
