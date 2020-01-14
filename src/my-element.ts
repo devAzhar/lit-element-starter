@@ -12,10 +12,17 @@
  * http://polymer.github.io/PATENTS.txt
  */
 
-import {LitElement, html, customElement, property, css, TemplateResult} from 'lit-element';
-import { until } from 'lit-html/directives/until.js';
+import {
+  LitElement,
+  html,
+  customElement,
+  property,
+  TemplateResult,
+} from 'lit-element';
+import {until} from 'lit-html/directives/until.js';
 import {getData} from './services/report-data';
-import './sub-element'
+import {getStyles} from './styles/my-eleement.styles';
+import './sub-element';
 
 /**
  * An example element.
@@ -25,14 +32,9 @@ import './sub-element'
  */
 @customElement('my-element')
 export class MyElement extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-      border: solid 1px gray;
-      padding: 16px;
-      max-width: 800px;
-    }
-  `;
+  static get styles() {
+    return getStyles();
+  }
 
   @property({type: TemplateResult, attribute: false})
   private externalTestData = html``;
@@ -64,14 +66,16 @@ export class MyElement extends LitElement {
   @property({type: Number})
   count = 0;
 
-  private getExternalData = (data: any) => {
-    const content = getData(data).then(data => {
+  private getExternalData = (data: any): TemplateResult => {
+    const content = getData(data).then((data) => {
       console.log('External data is loaded...');
       return data;
     });
-    return html`<h1>${until(content, 'Loading External Data...')}</h1>`;
-  }
-  
+    return html`
+      <h1>${until(content, 'Loading External Data...')}</h1>
+    `;
+  };
+
   render() {
     console.log(`render() -> start...`);
 
@@ -83,15 +87,16 @@ export class MyElement extends LitElement {
 
     return html`
       <h1>Hello ${this.timerValue}, ${this.name}!</h1>
-      <sub-element title='sub-element-1'></sub-element>
-      <div>
-          ${this.externalTestData}
-      </div>
+      <sub-element title="sub-element-1"></sub-element>
+      <div>${this.externalTestData}</div>
+
       <button @click=${this._onClick} part="button">
         Click Count: ${this.count}
       </button>
-      <sub-element title='sub-element-2'></sub-element>
-      <slot></slot>
+
+      <!--<sub-element title='sub-element-2'></sub-element>-->
+      <slot name="one"></slot>
+      <slot name="two"></slot>
     `;
   }
 

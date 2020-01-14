@@ -30,7 +30,6 @@ export class SubElement extends LitElement {
   }
 }
 
-
 declare global {
   interface HTMLElementTagNameMap {
     'sub-element': SubElement;
