@@ -34,12 +34,18 @@ export class MyElement extends LitElement {
   /**
    * The name to say "Hello" to.
    */
-  @property()
+  @property({ type: String })
   name = 'World';
 
-  @property()
+  @property({ type: Number })
   timerValue = 0;
 
+  // Controller to just call once inside render()
+  // For every change render() is called again...
+  timerRef: any;
+
+  @property({type: String})
+  displayToken = '';
   /**
    * The number of times the button has been clicked.
    */
@@ -47,9 +53,12 @@ export class MyElement extends LitElement {
   count = 0;
 
   render() {
-    setTimeout(() => {
+    console.log(`render() -> start...`);
+
+    !this.timerRef && (this.timerRef = setTimeout(() => {
+      console.log(`setTimeout...`);
       this.timerValue++;
-    }, 2000);
+    }, 2000));
 
     return html`
       <h1>Hello ${this.timerValue}, ${this.name}!</h1>
@@ -62,6 +71,7 @@ export class MyElement extends LitElement {
 
   private _onClick() {
     this.count++;
+    console.log(`Clicked -> displayToken = ${this.displayToken}`);
   }
 
   foo(): string {
